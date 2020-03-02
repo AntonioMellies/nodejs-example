@@ -11,7 +11,7 @@ class StartUp {
 
     constructor() {
         this.app = express();
-
+        
         this._db = new DataBase();
         this._db.createConnection();
         

@@ -1,18 +1,20 @@
 version: '3'
 services:
 
-  nodejs-example-service:
-    image: mellies/nodejs-example-service
-    container_name: nodejs-example-service
-    build:
-      context: ./
-      dockerfile: Dockerfile
-    ports:
-      - "5000:3050"
-    links:
-      - mongodb-service
-    depends_on: 
-      - mongodb-service
+#  nodejs-example-service:
+#    image: mellies/nodejs-example-service
+#    container_name: nodejs-example-service
+#    build:
+#      context: ./
+#      dockerfile: Dockerfile
+#    ports:
+#      - "5000:3050"
+#    environment
+#    - NODE_ENV=production
+#    links:
+#      - mongodb-service
+#    depends_on: 
+#      - mongodb-service
   
   mongodb-service:
     image: tutum/mongodb
