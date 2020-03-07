@@ -17,3 +17,4 @@ export const NODE_ENV = process.env.NODE_ENV || 'Não definido';
 export const DB_HOST = process.env.DB_HOST || 'mongodb://mongodb-service/db_portal';
 export const API_PORT = process.env.API_PORT || 80 ;
 export const JWT_SECRET = process.env.JWT_SECRET || 'secret';
+export const UPLOADS_FOLDER_PATH = process.env.UPLOADS_FOLDER_PATH || 'uploads/';

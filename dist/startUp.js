@@ -4,7 +4,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const db_1 = require("./config/db");
+const auth_1 = require("./middlewares/auth");
 const newsRoutes_1 = require("./routes/newsRoutes");
+const uploadsRoutes_1 = require("./routes/uploadsRoutes");
 class StartUp {
     constructor() {
         this.app = express();
@@ -29,6 +31,8 @@ class StartUp {
         this.app.route('/').get((req, res) => {
             res.send({ versao: '0.0.1' });
         });
+        this.app.use('/api/upload', uploadsRoutes_1.default);
+        this.app.use(auth_1.default.validate);
         this.app.use('/api/news', newsRoutes_1.default);
     }
 }

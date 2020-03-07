@@ -2,8 +2,8 @@ import * as mongoose from 'mongoose';
 import * as EnvConfig from './envConfig';
 
 class DataBase {
-    
-    createConnection(){
+
+    createConnection() {
         console.log(`createConnection DB_HOST: ${EnvConfig.DB_HOST}`)
         mongoose.connect(EnvConfig.DB_HOST);
     }
