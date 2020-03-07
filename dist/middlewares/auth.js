@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const EnvConfig = require("../config/envConfig");
 class Auth {
     validate(req, res, next) {
-        let token = req.headers['x-access-token'] || req.headers['authorization'];
+        let token = req.headers['x-access-token'] || req.headers['authorization'] || '';
         if (token.startsWith('Bearer ')) {
             // Remove Bearer from string
             token = token.slice(7, token.length);
@@ -14,7 +14,7 @@ class Auth {
                 if (err) {
                     res.status(403).send({
                         success: false,
-                        message: '403 - forbidden'
+                        message: '403 - Forbidden'
                     });
                 }
                 else {
@@ -25,7 +25,7 @@ class Auth {
         else {
             res.status(401).send({
                 success: false,
-                message: '401 - unauthorized'
+                message: '401 - Unauthorized'
             });
         }
     }

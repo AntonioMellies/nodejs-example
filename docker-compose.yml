@@ -24,3 +24,9 @@ services:
       - "28017:28017"
     environment:
     - AUTH=no
+
+  redis-service:
+    image: redis
+    container_name: redis-service
+    ports:
+      - "6379:6379"

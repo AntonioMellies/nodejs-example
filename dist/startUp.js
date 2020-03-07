@@ -31,8 +31,8 @@ class StartUp {
         this.app.route('/').get((req, res) => {
             res.send({ versao: '0.0.1' });
         });
-        this.app.use('/api/upload', uploadsRoutes_1.default);
         this.app.use(auth_1.default.validate);
+        this.app.use('/api/upload', uploadsRoutes_1.default);
         this.app.use('/api/news', newsRoutes_1.default);
     }
 }

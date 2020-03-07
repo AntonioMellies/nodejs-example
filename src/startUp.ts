@@ -41,9 +41,8 @@ class StartUp {
             res.send( {versao:'0.0.1'} );
         })
 
-        this.app.use('/api/upload',UploadsRoutes);
-
         this.app.use(Auth.validate);
+        this.app.use('/api/upload',UploadsRoutes);
         this.app.use('/api/news',NewsRoutes);
     }
 }
