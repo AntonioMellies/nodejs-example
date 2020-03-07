@@ -13,3 +13,4 @@ dotenv.config({ path: path });
 exports.NODE_ENV = process.env.NODE_ENV || 'Não definido';
 exports.DB_HOST = process.env.DB_HOST || 'mongodb://mongodb-service/db_portal';
 exports.API_PORT = process.env.API_PORT || 80;
+exports.JWT_SECRET = process.env.JWT_SECRET || 'secret';
