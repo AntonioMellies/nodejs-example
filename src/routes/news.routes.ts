@@ -1,5 +1,5 @@
 import * as express from "express";
-import NewsController from '../controller/newsController';
+import NewsController from '../controllers/news.controller';
 
 let routes = express.Router(); 
 routes.post('/', NewsController.create);

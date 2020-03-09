@@ -2,7 +2,7 @@ import * as HttpStatus from 'http-status';
 import * as redis from 'redis';
 
 import * as EnvConfig from '../config/envConfig';
-import NewsService from '../services/newsService';
+import NewsService from '../services/news.service';
 import UtilsController from '../utils/utilsController';
 
 class NewsController {

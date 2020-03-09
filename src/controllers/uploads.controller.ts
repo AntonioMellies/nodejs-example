@@ -1,4 +1,4 @@
-import uploads from '../services/uploadsService';
+import uploads from '../services/uploads.service';
 import UtilsController from '../utils/utilsController';
 import * as HttpStatus from 'http-status';
 

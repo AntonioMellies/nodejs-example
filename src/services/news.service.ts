@@ -1,4 +1,4 @@
-import NewsRepository from '../repositories/newsRepository';
+import NewsRepository from '../repositories/news.repository';
 
 class NewsService {
 
