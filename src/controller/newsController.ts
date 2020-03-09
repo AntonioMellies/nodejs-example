@@ -1,15 +1,15 @@
-import NewsService from '../services/newsService';
-import UtilsController from '../utils/utilsController';
 import * as HttpStatus from 'http-status';
 import * as redis from 'redis';
 
+import * as EnvConfig from '../config/envConfig';
+import NewsService from '../services/newsService';
+import UtilsController from '../utils/utilsController';
+
 class NewsController {
     async get(req, res) {
-
-        let clientRedis = redis.createClient();
+        let clientRedis = redis.createClient(EnvConfig.REDIS_PORT,EnvConfig.REDIS_SERVICE);
         await clientRedis.get('news', async function (err, reply) {
             try {
-
                 if (reply) {
                     UtilsController.sendResponse(res, HttpStatus.OK, JSON.parse(reply));
                 } else {

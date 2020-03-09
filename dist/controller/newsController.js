@@ -9,14 +9,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const newsService_1 = require("../services/newsService");
-const utilsController_1 = require("../utils/utilsController");
 const HttpStatus = require("http-status");
 const redis = require("redis");
+const EnvConfig = require("../config/envConfig");
+const newsService_1 = require("../services/newsService");
+const utilsController_1 = require("../utils/utilsController");
 class NewsController {
     get(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let clientRedis = redis.createClient();
+            let clientRedis = redis.createClient(EnvConfig.REDIS_PORT, EnvConfig.REDIS_SERVICE);
             yield clientRedis.get('news', function (err, reply) {
                 return __awaiter(this, void 0, void 0, function* () {
                     try {

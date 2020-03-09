@@ -6,7 +6,7 @@
   "scripts": {
     "compile": "tsc -w",
     "dev": "NODE_ENV=development nodemon ./dist/server.js",
-    "start": "NODE_ENV=production node src/server.js"
+    "start": "NODE_ENV=production node server.js"
   },
   "keywords": [],
   "author": "",

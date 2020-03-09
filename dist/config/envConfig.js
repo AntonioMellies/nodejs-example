@@ -12,6 +12,8 @@ switch (process.env.NODE_ENV) {
 dotenv.config({ path: path });
 exports.NODE_ENV = process.env.NODE_ENV || 'Não definido';
 exports.DB_URI = process.env.DB_URI || 'mongodb://mongodb-service/db_portal';
-exports.API_PORT = process.env.API_PORT || 80;
+exports.API_PORT = Number(process.env.API_PORT) || 3050;
 exports.JWT_SECRET = process.env.JWT_SECRET || 'secret';
 exports.UPLOADS_FOLDER_PATH = process.env.UPLOADS_FOLDER_PATH || 'uploads/';
+exports.REDIS_PORT = Number(process.env.REDIS_PORT) || 6379;
+exports.REDIS_SERVICE = process.env.REDIS_SERVICE || 'redis-service';

@@ -1,4 +1,3 @@
- 
 # Logs
 logs
 *.log
@@ -90,3 +89,6 @@ typings/
 
 # Uploads Folder
 uploads
+
+# Producao
+dist/
