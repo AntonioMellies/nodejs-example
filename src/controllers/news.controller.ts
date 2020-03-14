@@ -4,10 +4,30 @@ import * as redis from 'redis';
 import * as EnvConfig from '../config/envConfig';
 import NewsService from '../services/news.service';
 import UtilsController from '../utils/utilsController';
+import CsvService from '../services/csv.service';
+import { link } from 'fs';
 
 class NewsController {
+
+    async search(req, res) {
+        try {
+            const key = req.params.key;
+
+            const page = req.query.page ? parseInt(req.query.page) : 1;
+            const perPage = req.query.limit ? parseInt(req.query.limit) : 10;
+
+            let response = await NewsService.search(key, page, perPage);
+            UtilsController.sendResponse(res, HttpStatus.OK, response);
+
+        } catch (error) {
+            console.error.bind(console, `Error ${error}`)
+        }
+
+    }
+
+
     async get(req, res) {
-        let clientRedis = redis.createClient(EnvConfig.REDIS_PORT,EnvConfig.REDIS_SERVICE);
+        let clientRedis = redis.createClient(EnvConfig.REDIS_PORT, EnvConfig.REDIS_SERVICE);
         await clientRedis.get('news', async function (err, reply) {
             try {
                 if (reply) {
@@ -70,6 +90,19 @@ class NewsController {
         } catch (error) {
             console.error.bind(console, `Error ${error}`)
 
+        }
+    }
+
+    async exportToCsv(req, res) {
+        const fields = ['_id', 'hat', 'title', 'text', 'author', 'img', 'publishDate', 'link', 'active'];
+        const options = { fields };
+        try {
+            let response = await NewsService.get();
+            let filename = CsvService.toCSV(response, options);
+            UtilsController.sendResponse(res, HttpStatus.OK, req.get('host') + '/' + EnvConfig.EXPORTS_FOLDER_PATH + filename);
+
+        } catch (error) {
+            console.error.bind(console, `Error ${error}`)
         }
     }
 }

@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const compression = require("compression");
 const db_1 = require("./config/db");
+const EnvConfig = require("./config/envConfig");
 const auth_middleware_1 = require("./middlewares/auth.middleware");
 const news_routes_1 = require("./routes/news.routes");
 const uploads_routes_1 = require("./routes/uploads.routes");
@@ -28,6 +29,7 @@ class StartUp {
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({ extended: false }));
         this.app.use(compression());
+        this.app.use('/' + EnvConfig.EXPORTS_FOLDER_PATH, express.static(process.cwd() + '/' + EnvConfig.EXPORTS_FOLDER_PATH));
     }
     routes() {
         this.app.route('/').get((req, res) => {
